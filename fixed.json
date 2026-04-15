@@ -1,0 +1,948 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$5w9GmEn72KhbCarDej4rsP$n0/Zs3SmluenRVMWpU4zUClGBudVnvUA+urWsVugTls=",
+    "last_login": "2026-04-14T20:41:07.172Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@shinjan.aero",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-04-11T11:34:58.176Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$VORCdeXemJviJ6rD8CP1v7$s0JHy2xQ88tiJfGFMUWejbWSIqDWdMwtYzOtTm4LvBA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "passenger1",
+    "first_name": "Alex",
+    "last_name": "Sterling",
+    "email": "p1@email.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-11T11:34:58.665Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$iEDiJ7GscPbrV0BAdrmJ1I$UPkykHcCtsCLBPaV1DjlIsOn+SToxaVrM5h4C/CFHt0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "official1",
+    "first_name": "Sarah",
+    "last_name": "Chen",
+    "email": "o1@email.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-11T11:34:59.081Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$TTgzfQdyOE4ycRv2lu2H7D$M/uphjWTnoGuiQMN6hkKiEipu75ONl+bPGof5Pf5irE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "shinjanpaul",
+    "first_name": "Shinjan",
+    "last_name": "Paul",
+    "email": "shinjanpaul153@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-14T08:01:01.239Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$5y8e9Rp8mNfJNrlczjsHP2$lDAxsqCN8b/yzNF2VZMF03hv88tnwT0Q3xN8nE9c2KE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "shinjan",
+    "first_name": "shinjan",
+    "last_name": "Paul",
+    "email": "shinjan.paul.it27@heritageit.edu.in",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-14T08:04:55.889Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "og09dpb5a5z5vmcnevako9zhpzgb12t2",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAURO_C2hAo8AGX7nsG8j9QqRpISrsy3t026UKTWc17M28WcFtL2HpewpzYlUl2-e0I4zPXA6QH1nvjsdV1mYkfCj9p52NL-XU73b-Dgr3sawM0TOStVICEe8RAAMmC0yqjjsaYmIQwDjzpLEQED06SnSBLnVRkny_l-DfK:1wBrE9:0sRIu5VQd8uqVBPPSWVSLB57uEfbFH4ZebTkSpMdcqo",
+    "expire_date": "2026-04-26T09:35:37.167Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "v2lf8wvhwag763sx2fp1nxbughnxjax6",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAURO_C2hAo8AGX7nsG8j9QqRpISrsy3t026UKTWc17M28WcFtL2HpewpzYlUl2-e0I4zPXA6QH1nvjsdV1mYkfCj9p52NL-XU73b-Dgr3sawM0TOStVICEe8RAAMmC0yqjjsaYmIQwDjzpLEQED06SnSBLnVRkny_l-DfK:1wCkZH:MZ0yYTTH7qzJcnw73JhTqvDqqLOpfo_JjiJj7DHHNN8",
+    "expire_date": "2026-04-28T20:41:07.179Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "7d2f26badb3fa1a56e2d4dfb2fc58d2ba6b6bd07",
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "created": "2026-04-14T18:52:59.923Z"
+  }
+},
+{
+  "model": "api.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "admin"
+    ],
+    "user_type": "ministry_official",
+    "phone": "",
+    "loyalty_points": 50873
+  }
+},
+{
+  "model": "api.userprofile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "passenger1"
+    ],
+    "user_type": "passenger",
+    "phone": "",
+    "loyalty_points": 124500
+  }
+},
+{
+  "model": "api.userprofile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "official1"
+    ],
+    "user_type": "flight_official",
+    "phone": "",
+    "loyalty_points": 8000
+  }
+},
+{
+  "model": "api.userprofile",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "shinjanpaul"
+    ],
+    "user_type": "passenger",
+    "phone": "8944934072",
+    "loyalty_points": 0
+  }
+},
+{
+  "model": "api.userprofile",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "shinjan"
+    ],
+    "user_type": "passenger",
+    "phone": "8944934072",
+    "loyalty_points": 0
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 1,
+  "fields": {
+    "flight_number": "SJ-882",
+    "flight_name": "Dreamliner 787",
+    "origin": "Dubai",
+    "origin_code": "DXB",
+    "destination": "London",
+    "destination_code": "LHR",
+    "departure_time": "2026-12-31T13:34:59Z",
+    "arrival_time": "2026-12-30T22:34:59Z",
+    "economy_seats": 50,
+    "economy_available": 49,
+    "economy_price": "3000.00",
+    "business_seats": 20,
+    "business_available": 20,
+    "business_price": "8000.00",
+    "first_seats": 10,
+    "first_available": 10,
+    "first_price": "15000.00",
+    "premium_economy_seats": 20,
+    "premium_economy_available": 20,
+    "premium_economy_price": "5000.00",
+    "seat_type": "business",
+    "total_seats": 80,
+    "available_seats": 41,
+    "price": "4850.00",
+    "status": "in_flight",
+    "aircraft_type": "Boeing 787-9 Dreamliner",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 2,
+  "fields": {
+    "flight_number": "SJ-415",
+    "flight_name": "Airbus A350",
+    "origin": "New York",
+    "origin_code": "JFK",
+    "destination": "Singapore",
+    "destination_code": "SIN",
+    "departure_time": "2026-12-30T23:34:59Z",
+    "arrival_time": "2026-12-31T06:34:59Z",
+    "economy_seats": 50,
+    "economy_available": 50,
+    "economy_price": "3000.00",
+    "business_seats": 20,
+    "business_available": 20,
+    "business_price": "8000.00",
+    "first_seats": 10,
+    "first_available": 10,
+    "first_price": "15000.00",
+    "premium_economy_seats": 20,
+    "premium_economy_available": 20,
+    "premium_economy_price": "5000.00",
+    "seat_type": "business",
+    "total_seats": 150,
+    "available_seats": 49,
+    "price": "3200.00",
+    "status": "boarding",
+    "aircraft_type": "Airbus A350-1000",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 3,
+  "fields": {
+    "flight_number": "SJ-202",
+    "flight_name": "Sky Express",
+    "origin": "Tokyo",
+    "origin_code": "HND",
+    "destination": "Sydney",
+    "destination_code": "SYD",
+    "departure_time": "2026-12-30T19:34:59Z",
+    "arrival_time": "2026-12-31T04:34:59Z",
+    "economy_seats": 50,
+    "economy_available": 50,
+    "economy_price": "3000.00",
+    "business_seats": 20,
+    "business_available": 20,
+    "business_price": "8000.00",
+    "first_seats": 10,
+    "first_available": 9,
+    "first_price": "15000.00",
+    "premium_economy_seats": 20,
+    "premium_economy_available": 20,
+    "premium_economy_price": "5000.00",
+    "seat_type": "economy",
+    "total_seats": 150,
+    "available_seats": 32,
+    "price": "1200.00",
+    "status": "delayed",
+    "aircraft_type": "Boeing 777-300ER",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 4,
+  "fields": {
+    "flight_number": "SJ-402",
+    "flight_name": "Premier Direct",
+    "origin": "London",
+    "origin_code": "LHR",
+    "destination": "Tokyo",
+    "destination_code": "HND",
+    "departure_time": "2026-12-31T04:34:59Z",
+    "arrival_time": "2026-12-31T17:34:59Z",
+    "economy_seats": 50,
+    "economy_available": 50,
+    "economy_price": "3000.00",
+    "business_seats": 20,
+    "business_available": 20,
+    "business_price": "8000.00",
+    "first_seats": 10,
+    "first_available": 10,
+    "first_price": "15000.00",
+    "premium_economy_seats": 20,
+    "premium_economy_available": 20,
+    "premium_economy_price": "5000.00",
+    "seat_type": "first",
+    "total_seats": 200,
+    "available_seats": 94,
+    "price": "4100.00",
+    "status": "scheduled",
+    "aircraft_type": "Dreamliner 787",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 5,
+  "fields": {
+    "flight_number": "SJ-118",
+    "flight_name": "Gulf Connect",
+    "origin": "London",
+    "origin_code": "LHR",
+    "destination": "Tokyo",
+    "destination_code": "HND",
+    "departure_time": "2026-12-31T11:34:59Z",
+    "arrival_time": "2026-12-30T21:34:59Z",
+    "economy_seats": 50,
+    "economy_available": 50,
+    "economy_price": "3000.00",
+    "business_seats": 20,
+    "business_available": 20,
+    "business_price": "8000.00",
+    "first_seats": 10,
+    "first_available": 10,
+    "first_price": "15000.00",
+    "premium_economy_seats": 20,
+    "premium_economy_available": 20,
+    "premium_economy_price": "5000.00",
+    "seat_type": "business",
+    "total_seats": 80,
+    "available_seats": 27,
+    "price": "3200.00",
+    "status": "scheduled",
+    "aircraft_type": "Airbus A350",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 6,
+  "fields": {
+    "flight_number": "SJ-992",
+    "flight_name": "Night Express",
+    "origin": "London",
+    "origin_code": "LHR",
+    "destination": "Tokyo",
+    "destination_code": "HND",
+    "departure_time": "2026-12-31T09:34:59Z",
+    "arrival_time": "2026-12-31T14:34:59Z",
+    "economy_seats": 50,
+    "economy_available": 50,
+    "economy_price": "3000.00",
+    "business_seats": 20,
+    "business_available": 20,
+    "business_price": "8000.00",
+    "first_seats": 10,
+    "first_available": 10,
+    "first_price": "15000.00",
+    "premium_economy_seats": 20,
+    "premium_economy_available": 20,
+    "premium_economy_price": "5000.00",
+    "seat_type": "first",
+    "total_seats": 100,
+    "available_seats": 94,
+    "price": "4850.00",
+    "status": "scheduled",
+    "aircraft_type": "Dreamliner 787",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 7,
+  "fields": {
+    "flight_number": "SJ-301",
+    "flight_name": "Pacific Star",
+    "origin": "Mumbai",
+    "origin_code": "BOM",
+    "destination": "New York",
+    "destination_code": "JFK",
+    "departure_time": "2026-12-31T06:34:59Z",
+    "arrival_time": "2026-12-30T20:34:59Z",
+    "economy_seats": 50,
+    "economy_available": 50,
+    "economy_price": "3000.00",
+    "business_seats": 20,
+    "business_available": 20,
+    "business_price": "8000.00",
+    "first_seats": 10,
+    "first_available": 10,
+    "first_price": "15000.00",
+    "premium_economy_seats": 20,
+    "premium_economy_available": 20,
+    "premium_economy_price": "5000.00",
+    "seat_type": "economy",
+    "total_seats": 100,
+    "available_seats": 24,
+    "price": "850.00",
+    "status": "scheduled",
+    "aircraft_type": "Boeing 737 MAX",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 8,
+  "fields": {
+    "flight_number": "SJ-501",
+    "flight_name": "Euro Connect",
+    "origin": "Delhi",
+    "origin_code": "DEL",
+    "destination": "Paris",
+    "destination_code": "CDG",
+    "departure_time": "2026-12-30T18:34:59Z",
+    "arrival_time": "2026-12-31T05:34:59Z",
+    "economy_seats": 50,
+    "economy_available": 48,
+    "economy_price": "3000.00",
+    "business_seats": 20,
+    "business_available": 20,
+    "business_price": "8000.00",
+    "first_seats": 10,
+    "first_available": 9,
+    "first_price": "15000.00",
+    "premium_economy_seats": 20,
+    "premium_economy_available": 20,
+    "premium_economy_price": "5000.00",
+    "seat_type": "premium_economy",
+    "total_seats": 200,
+    "available_seats": 184,
+    "price": "1100.00",
+    "status": "scheduled",
+    "aircraft_type": "Airbus A320",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 9,
+  "fields": {
+    "flight_number": "SJ-109",
+    "flight_name": "Paris Express",
+    "origin": "Singapore",
+    "origin_code": "SIN",
+    "destination": "Paris",
+    "destination_code": "CDG",
+    "departure_time": "2026-12-31T17:34:59Z",
+    "arrival_time": "2026-12-31T06:34:59Z",
+    "economy_seats": 50,
+    "economy_available": 50,
+    "economy_price": "3000.00",
+    "business_seats": 20,
+    "business_available": 20,
+    "business_price": "8000.00",
+    "first_seats": 10,
+    "first_available": 10,
+    "first_price": "15000.00",
+    "premium_economy_seats": 20,
+    "premium_economy_available": 20,
+    "premium_economy_price": "5000.00",
+    "seat_type": "business",
+    "total_seats": 100,
+    "available_seats": 10,
+    "price": "2800.00",
+    "status": "completed",
+    "aircraft_type": "Airbus A380",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 10,
+  "fields": {
+    "flight_number": "SJ-309",
+    "flight_name": "Mumbai Express",
+    "origin": "Mumbai",
+    "origin_code": "BOM",
+    "destination": "Singapore",
+    "destination_code": "SIN",
+    "departure_time": "2026-12-31T02:30:00Z",
+    "arrival_time": "2026-12-31T08:30:00Z",
+    "economy_seats": 50,
+    "economy_available": 50,
+    "economy_price": "3000.00",
+    "business_seats": 20,
+    "business_available": 20,
+    "business_price": "8000.00",
+    "first_seats": 10,
+    "first_available": 10,
+    "first_price": "15000.00",
+    "premium_economy_seats": 20,
+    "premium_economy_available": 20,
+    "premium_economy_price": "5000.00",
+    "seat_type": "economy",
+    "total_seats": 20,
+    "available_seats": 20,
+    "price": "8000.00",
+    "status": "scheduled",
+    "aircraft_type": "Airbus A380",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.flight",
+  "pk": 11,
+  "fields": {
+    "flight_number": "SJ-502",
+    "flight_name": "Delhi SkyLink",
+    "origin": "Delhi",
+    "origin_code": "DEL",
+    "destination": "Paris",
+    "destination_code": "CDG",
+    "departure_time": "2026-12-30T21:00:00Z",
+    "arrival_time": "2026-12-31T04:00:00Z",
+    "economy_seats": 300,
+    "economy_available": 300,
+    "economy_price": "6500.00",
+    "business_seats": 40,
+    "business_available": 40,
+    "business_price": "22000.00",
+    "first_seats": 12,
+    "first_available": 12,
+    "first_price": "45000.00",
+    "premium_economy_seats": 80,
+    "premium_economy_available": 80,
+    "premium_economy_price": "10000.00",
+    "seat_type": "economy",
+    "total_seats": 100,
+    "available_seats": 100,
+    "price": "5000.00",
+    "status": "scheduled",
+    "aircraft_type": "Boeing 777-300ER",
+    "created_by": [
+      "admin"
+    ]
+  }
+},
+{
+  "model": "api.reservation",
+  "pk": 7,
+  "fields": {
+    "ticket_number": "TKT49246494",
+    "passenger": [
+      "admin"
+    ],
+    "flight": 8,
+    "reservation_date": "2026-04-14T06:33:17.004Z",
+    "seats_booked": 1,
+    "status": "confirmed",
+    "credit_card_number": "RAZORPAY",
+    "bank_name": "Razorpay",
+    "total_price": "3000.00",
+    "seat_number": "01E",
+    "seat_type": "economy",
+    "travel_date": "2026-04-25"
+  }
+},
+{
+  "model": "api.reservation",
+  "pk": 8,
+  "fields": {
+    "ticket_number": "TKT97576972",
+    "passenger": [
+      "admin"
+    ],
+    "flight": 8,
+    "reservation_date": "2026-04-14T11:36:08.417Z",
+    "seats_booked": 1,
+    "status": "confirmed",
+    "credit_card_number": "RAZORPAY",
+    "bank_name": "Razorpay",
+    "total_price": "3000.00",
+    "seat_number": "01E",
+    "seat_type": "economy",
+    "travel_date": "2026-04-25"
+  }
+},
+{
+  "model": "api.reservation",
+  "pk": 9,
+  "fields": {
+    "ticket_number": "TKT98909835",
+    "passenger": [
+      "admin"
+    ],
+    "flight": 8,
+    "reservation_date": "2026-04-14T11:36:56.347Z",
+    "seats_booked": 1,
+    "status": "confirmed",
+    "credit_card_number": "RAZORPAY",
+    "bank_name": "Razorpay",
+    "total_price": "8000.00",
+    "seat_number": "01E",
+    "seat_type": "business",
+    "travel_date": "2026-04-25"
+  }
+},
+{
+  "model": "api.reservation",
+  "pk": 10,
+  "fields": {
+    "ticket_number": "TKT36629177",
+    "passenger": [
+      "admin"
+    ],
+    "flight": 8,
+    "reservation_date": "2026-04-14T11:43:17.072Z",
+    "seats_booked": 1,
+    "status": "confirmed",
+    "credit_card_number": "RAZORPAY",
+    "bank_name": "Razorpay",
+    "total_price": "15000.00",
+    "seat_number": "01E",
+    "seat_type": "first",
+    "travel_date": "2026-04-18"
+  }
+},
+{
+  "model": "api.reservation",
+  "pk": 11,
+  "fields": {
+    "ticket_number": "TKT71266671",
+    "passenger": [
+      "admin"
+    ],
+    "flight": 5,
+    "reservation_date": "2026-04-14T11:44:59.551Z",
+    "seats_booked": 1,
+    "status": "confirmed",
+    "credit_card_number": "RAZORPAY",
+    "bank_name": "Razorpay",
+    "total_price": "8000.00",
+    "seat_number": "01E",
+    "seat_type": "business",
+    "travel_date": "2026-04-18"
+  }
+},
+{
+  "model": "api.reservation",
+  "pk": 12,
+  "fields": {
+    "ticket_number": "TKT42658836",
+    "passenger": [
+      "admin"
+    ],
+    "flight": 11,
+    "reservation_date": "2026-04-14T18:39:40.031Z",
+    "seats_booked": 1,
+    "status": "confirmed",
+    "credit_card_number": "RAZORPAY",
+    "bank_name": "Razorpay",
+    "total_price": "6500.00",
+    "seat_number": "01E",
+    "seat_type": "economy",
+    "travel_date": "2026-04-18"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-04-12T14:24:30.083Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "flight"
+    ],
+    "object_id": "3",
+    "object_repr": "SJ-202 | HND ΓåÆ SYD",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Departure time\", \"Arrival time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-04-12T14:24:57.239Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "flight"
+    ],
+    "object_id": "1",
+    "object_repr": "SJ-882 | DXB ΓåÆ LHR",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Departure time\", \"Arrival time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-04-12T14:25:24.513Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "flight"
+    ],
+    "object_id": "2",
+    "object_repr": "SJ-415 | JFK ΓåÆ SIN",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Departure time\", \"Arrival time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-04-12T14:26:04.273Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "flight"
+    ],
+    "object_id": "4",
+    "object_repr": "SJ-402 | LHR ΓåÆ HND",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Departure time\", \"Arrival time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-04-12T14:26:19.870Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "flight"
+    ],
+    "object_id": "5",
+    "object_repr": "SJ-118 | LHR ΓåÆ HND",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Departure time\", \"Arrival time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-04-12T14:26:43.418Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "flight"
+    ],
+    "object_id": "6",
+    "object_repr": "SJ-992 | LHR ΓåÆ HND",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Departure time\", \"Arrival time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-04-12T14:27:04.535Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "flight"
+    ],
+    "object_id": "7",
+    "object_repr": "SJ-301 | BOM ΓåÆ JFK",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Departure time\", \"Arrival time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-04-12T14:27:20.286Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "flight"
+    ],
+    "object_id": "8",
+    "object_repr": "SJ-501 | DEL ΓåÆ CDG",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Departure time\", \"Arrival time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-04-12T14:27:41.869Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "flight"
+    ],
+    "object_id": "9",
+    "object_repr": "SJ-109 | SIN ΓåÆ CDG",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Departure time\", \"Arrival time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-04-14T06:35:28.490Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "reservation"
+    ],
+    "object_id": "6",
+    "object_repr": "Ticket TKT39144452 - admin",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-04-14T06:35:35.727Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "reservation"
+    ],
+    "object_id": "5",
+    "object_repr": "Ticket TKT66774212 - admin",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-04-14T06:35:41.727Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "reservation"
+    ],
+    "object_id": "4",
+    "object_repr": "Ticket TKT67196062 - admin",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-04-14T06:35:48.304Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "reservation"
+    ],
+    "object_id": "3",
+    "object_repr": "Ticket TKT40260798 - admin",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-04-14T06:35:54.083Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "reservation"
+    ],
+    "object_id": "2",
+    "object_repr": "Ticket TKT33585960 - admin",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-04-14T06:35:59.527Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "api",
+      "reservation"
+    ],
+    "object_id": "1",
+    "object_repr": "Ticket TKT67495837 - admin",
+    "action_flag": 3,
+    "change_message": ""
+  }
+}
+]
