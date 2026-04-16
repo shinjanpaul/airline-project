@@ -235,7 +235,7 @@ function ReservePageContent() {
                         <div className="text-center self-center text-xs text-slate-400 font-bold">{row}</div>
                         {[0, 1].map(i => {
                           const seatId = `${row}${SEAT_GRID[i]}`;
-                          const isSelected = (selectedSeat || '') === seatId;
+                          const isSelected = selectedSeat === seatId;
                           const isBooked = booked[i];
                           return (
                             <button key={seatId} disabled={isBooked} onClick={() => !isBooked && setSelectedSeat(seatId)}
@@ -249,8 +249,7 @@ function ReservePageContent() {
                         })}
                         <div className="col-span-2 self-center"><div className="h-px w-full bg-slate-100" /></div>
                         {[2, 3].map(i => {
-                          const cols = ['A', 'B', 'E', 'F'];
-                          const seatId = `${row}${cols[i]}`;
+                          const seatId = `${row}${SEAT_GRID[i + 2]}`;
                           const isSelected = selectedSeat === seatId;
                           const isBooked = booked[i];
                           return (
