@@ -13,6 +13,8 @@ from .models import Flight, Reservation, UserProfile
 from .serializers import *
 
 # AUTH
+
+
 @api_view(['POST'])
 @permission_classes([permissions.AllowAny])
 def login_view(request):
@@ -36,6 +38,7 @@ def login_view(request):
         })
     return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
+
 @api_view(['POST'])
 @permission_classes([permissions.AllowAny])
 def register_view(request):
@@ -56,10 +59,12 @@ def register_view(request):
         }, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['POST'])
 def logout_view(request):
     request.user.auth_token.delete()
     return Response({'message': 'Logged out'})
+
 
 @api_view(['GET'])
 def me_view(request):
@@ -73,13 +78,17 @@ def me_view(request):
         'loyalty_points': profile.loyalty_points if profile else 0,
     })
 
+
 def get_dynamic_availability(flight, date_obj):
     """Calculate real available seats per class for a specific date."""
-    print(f"DEBUG get_dynamic: flight={flight.flight_number}, date_obj={date_obj}, type={type(date_obj)}")
+    print(
+        f"DEBUG get_dynamic: flight={flight.flight_number}, date_obj={date_obj}, type={type(date_obj)}")
 
     # Debug: print all reservations for this flight
-    all_reservations = Reservation.objects.filter(flight=flight).values('ticket_number', 'seat_type', 'travel_date', 'status')
-    print(f"DEBUG: All reservations for {flight.flight_number}: {list(all_reservations)}")
+    all_reservations = Reservation.objects.filter(flight=flight).values(
+        'ticket_number', 'seat_type', 'travel_date', 'status')
+    print(
+        f"DEBUG: All reservations for {flight.flight_number}: {list(all_reservations)}")
 
     bookings = Reservation.objects.filter(
         flight=flight,
@@ -104,6 +113,8 @@ def get_dynamic_availability(flight, date_obj):
     }
 
 # FLIGHTS
+
+
 class FlightListView(generics.ListCreateAPIView):
     serializer_class = FlightSerializer
 
@@ -119,9 +130,11 @@ class FlightListView(generics.ListCreateAPIView):
         # Removed seat_type filter - it was filtering by flight.seat_type which doesn't work for per-class availability
         fstatus = self.request.query_params.get('status')
         if origin:
-            qs = qs.filter(Q(origin__icontains=origin) | Q(origin_code__icontains=origin))
+            qs = qs.filter(Q(origin__icontains=origin) |
+                           Q(origin_code__icontains=origin))
         if destination:
-            qs = qs.filter(Q(destination__icontains=destination) | Q(destination_code__icontains=destination))
+            qs = qs.filter(Q(destination__icontains=destination)
+                           | Q(destination_code__icontains=destination))
         if fstatus:
             qs = qs.filter(status=fstatus)
         return qs
@@ -134,7 +147,8 @@ class FlightListView(generics.ListCreateAPIView):
         if date_str:
             try:
                 date_obj = datetime.date.fromisoformat(date_str)
-                print(f"DEBUG: Parsed date_obj: {date_obj}, type: {type(date_obj)}")
+                print(
+                    f"DEBUG: Parsed date_obj: {date_obj}, type: {type(date_obj)}")
             except ValueError:
                 print(f"DEBUG: Failed to parse date: {date_str}")
 
@@ -143,7 +157,8 @@ class FlightListView(generics.ListCreateAPIView):
             data = FlightSerializer(flight).data
             if date_obj:
                 avail = get_dynamic_availability(flight, date_obj)
-                print(f"DEBUG: flight {flight.flight_number}, date {date_obj}, bookings: {avail}")
+                print(
+                    f"DEBUG: flight {flight.flight_number}, date {date_obj}, bookings: {avail}")
                 data.update(avail)
                 data['available_seats'] = (
                     avail['economy_available'] +
@@ -159,7 +174,8 @@ class FlightListView(generics.ListCreateAPIView):
         flight_number = request.data.get('flight_number')
         try:
             existing = Flight.objects.get(flight_number=flight_number)
-            serializer = self.get_serializer(existing, data=request.data, partial=True)
+            serializer = self.get_serializer(
+                existing, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(serializer.data, status=http_status.HTTP_200_OK)
@@ -169,15 +185,19 @@ class FlightListView(generics.ListCreateAPIView):
             serializer.save(created_by=request.user)
             return Response(serializer.data, status=http_status.HTTP_201_CREATED)
 
+
 class FlightDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
 
 # RESERVATIONS
+
+
 @api_view(['GET', 'POST'])
 def reservations_view(request):
     if request.method == 'GET':
-        reservations = Reservation.objects.filter(passenger=request.user).order_by('-reservation_date')
+        reservations = Reservation.objects.filter(
+            passenger=request.user).order_by('-reservation_date')
         serializer = ReservationSerializer(reservations, many=True)
         return Response(serializer.data)
 
@@ -237,15 +257,16 @@ def reservations_view(request):
     else:
         return Response({'error': f'Only {available} seats available in {seat_type} on {travel_date}'}, status=400)
 
+
 @api_view(['POST'])
 def cancel_ticket(request):
     ticket_number = request.data.get('ticket_number')
-    credit_card = request.data.get('credit_card_number')
-    bank_name = request.data.get('bank_name')
+    credit_card = request.data.get('credit_card_number', '')
+    bank_name = request.data.get('bank_name', '')
     try:
         res = Reservation.objects.get(
-            ticket_number=ticket_number, passenger=request.user,
-            credit_card_number=credit_card, bank_name=bank_name
+            ticket_number=ticket_number,
+            passenger=request.user
         )
         if res.status == 'cancelled':
             return Response({'error': 'Already cancelled'}, status=400)
@@ -255,13 +276,16 @@ def cancel_ticket(request):
     except Reservation.DoesNotExist:
         return Response({'error': 'Ticket not found. Check your details.'}, status=404)
 
+
 @api_view(['GET'])
 def dashboard_stats(request):
     user = request.user
     profile = getattr(user, 'profile', None)
     user_type = profile.user_type if profile else 'passenger'
-    my_reservations = Reservation.objects.filter(passenger=user).order_by('-reservation_date')[:5]
-    upcoming = Flight.objects.filter(status__in=['scheduled', 'boarding']).order_by('departure_time')[:6]
+    my_reservations = Reservation.objects.filter(
+        passenger=user).order_by('-reservation_date')[:5]
+    upcoming = Flight.objects.filter(
+        status__in=['scheduled', 'boarding']).order_by('departure_time')[:6]
     stats = {
         'active_bookings': Reservation.objects.filter(passenger=user, status='confirmed').count(),
         'total_flights': Flight.objects.filter(status='scheduled').count(),
@@ -269,12 +293,14 @@ def dashboard_stats(request):
         'user_type': user_type,
     }
     if user_type in ['flight_official', 'ministry_official'] or user.is_staff:
-        stats['total_reservations'] = Reservation.objects.filter(status='confirmed').count()
+        stats['total_reservations'] = Reservation.objects.filter(
+            status='confirmed').count()
     return Response({
         'stats': stats,
         'my_reservations': ReservationSerializer(my_reservations, many=True).data,
         'upcoming_flights': FlightSerializer(upcoming, many=True).data,
     })
+
 
 @api_view(['GET'])
 def report_view(request):
@@ -301,6 +327,7 @@ def report_view(request):
         'active_flights': Flight.objects.filter(status__in=['scheduled', 'boarding', 'in_flight']).count(),
     })
 
+
 @api_view(['GET'])
 def all_reservations(request):
     user = request.user
@@ -310,11 +337,13 @@ def all_reservations(request):
     reservations = Reservation.objects.all().order_by('-reservation_date')
     return Response(ReservationSerializer(reservations, many=True).data)
 
+
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticated])
 def create_razorpay_order(request):
     amount = request.data.get('amount')
-    client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+    client = razorpay.Client(
+        auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
     order = client.order.create({
         'amount': int(amount),
         'currency': 'INR',
