@@ -96,7 +96,7 @@ function FlightsContent() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Sidebar */}
-          <aside className="lg:col-span-3 space-y-6 sticky top-28">
+          <aside className="lg:col-span-3 space-y-6 lg:sticky lg:top-28">
             <form onSubmit={handleSearch} className="space-y-5">
               <div>
                 <h3 className="text-sm font-bold uppercase tracking-widest text-secondary mb-3">Search</h3>

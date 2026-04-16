@@ -79,14 +79,18 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Bottom Nav */}
-      <nav className="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-white/90 backdrop-blur-lg shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-slate-100 flex justify-around items-center pt-3 pb-6">
-        {mobileLinks.map(({ href, icon, label }) => (
-          <Link key={href} href={href} className={`flex flex-col items-center ${pathname.startsWith(href) ? 'text-indigo-900 font-bold' : 'text-slate-400'}`}>
-            <span className="material-symbols-outlined">{icon}</span>
-            <span className="font-manrope text-[10px] uppercase tracking-widest mt-1">{label}</span>
-          </Link>
-        ))}
-      </nav>
-    </nav>
+     <nav className="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-white/90 backdrop-blur-lg shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-slate-100 flex justify-around items-center pt-3 pb-6">
+  {mobileLinks.map(({ href, icon, label }) => (
+    <Link key={href} href={href} className={`flex flex-col items-center ${pathname.startsWith(href) ? 'text-indigo-900 font-bold' : 'text-slate-400'}`}>
+      <span className="material-symbols-outlined">{icon}</span>
+      <span className="font-manrope text-[10px] uppercase tracking-widest mt-1">{label}</span>
+    </Link>
+  ))}
+  <button onClick={handleLogout} className="flex flex-col items-center text-slate-400">
+    <span className="material-symbols-outlined">logout</span>
+    <span className="font-manrope text-[10px] uppercase tracking-widest mt-1">Logout</span>
+  </button>
+</nav>
+</nav>
   );
 }
