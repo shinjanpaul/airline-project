@@ -15,8 +15,6 @@ interface Flight {
   premium_economy_seats: number; premium_economy_available: number; premium_economy_price: string;
 }
 
-const SEAT_GRID = ['A', 'B', '', '', 'E', 'F'];
-
 const loadRazorpay = () => {
   return new Promise(resolve => {
     const script = document.createElement('script');
@@ -76,8 +74,6 @@ function ReservePageContent() {
       setError('Please select a travel date before booking.');
       return;
     }
-
-    console.log('DEBUG handleSubmit - travelDate:', travelDate);
 
     // Waitlist
     if (flight.available_seats === 0) {
@@ -171,6 +167,36 @@ function ReservePageContent() {
     { row: '16', booked: [false, false, true, false] },
   ];
 
+  // Reusable seat button renderer
+  const renderSeat = (row: string, colLetter: string, isBooked: boolean) => {
+    const seatId = `${row}${colLetter}`;
+    const isSelected = selectedSeat === seatId;
+    return (
+      <button
+        key={seatId}
+        type="button"
+        disabled={isBooked}
+        onClick={() => { if (!isBooked) setSelectedSeat(seatId); }}
+        className={`w-full aspect-square rounded-lg flex items-center justify-center transition-all ${
+          isBooked
+            ? 'bg-[#c6c5d433] cursor-not-allowed'
+            : isSelected
+              ? 'bg-primary shadow-lg scale-110 ring-2 ring-white ring-offset-1'
+              : 'bg-surface-container-highest hover:bg-white'
+        }`}
+      >
+        <span
+          className={`material-symbols-outlined text-sm ${
+            isBooked ? 'text-slate-300' : isSelected ? 'text-white' : 'text-primary/40'
+          }`}
+          style={{ fontVariationSettings: isSelected ? "'FILL' 1" : "'FILL' 0" }}
+        >
+          {isBooked ? 'close' : 'chair'}
+        </span>
+      </button>
+    );
+  };
+
   return (
     <div className="bg-surface min-h-screen">
       <Navbar />
@@ -222,71 +248,60 @@ function ReservePageContent() {
                   </div>
                 </div>
                 <div className="bg-white/40 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-                  <div className="grid grid-cols-8 gap-2 max-w-sm mx-auto">
-                    <div />
-                    {['A', 'B', '', '', 'E', 'F', ''].map((col, i) => (
-                      <div key={i} className="text-center text-[10px] font-bold text-slate-400">{col}</div>
-                    ))}
-                    <div className="col-span-8 flex justify-center py-2">
+                  <div className="max-w-sm mx-auto">
+                    {/* Column headers */}
+                    <div className="grid grid-cols-6 gap-2 mb-2">
+                      <div className="text-center text-[10px] font-bold text-slate-400">A</div>
+                      <div className="text-center text-[10px] font-bold text-slate-400">B</div>
+                      <div /> {/* aisle */}
+                      <div /> {/* aisle */}
+                      <div className="text-center text-[10px] font-bold text-slate-400">E</div>
+                      <div className="text-center text-[10px] font-bold text-slate-400">F</div>
+                    </div>
+
+                    {/* Business Class label */}
+                    <div className="flex justify-center py-2">
                       <span className="text-[9px] uppercase tracking-widest text-on-tertiary-container font-bold">Business Class Gallery</span>
                     </div>
+
+                    {/* Business rows (01–02) */}
                     {seatRows.slice(0, 2).map(({ row, booked }) => (
-                      <React.Fragment key={row}>
-                        <div className="text-center self-center text-xs text-slate-400 font-bold">{row}</div>
-                        {[0, 1].map(i => {
-                          const seatId = `${row}${SEAT_GRID[i]}`;
-                          const isSelected = selectedSeat === seatId;
-                          const isBooked = booked[i];
-                          return (
-                            <button key={seatId} disabled={isBooked} onClick={() => !isBooked && setSelectedSeat(seatId)}
-                              className={`w-full aspect-square rounded-lg flex items-center justify-center transition-all ${isBooked ? 'bg-[#c6c5d433] cursor-not-allowed' : isSelected ? 'bg-primary shadow-lg scale-110 ring-2 ring-white ring-offset-1' : 'bg-surface-container-highest hover:bg-white'}`}>
-                              <span className={`material-symbols-outlined text-sm ${isBooked ? 'text-slate-300' : isSelected ? 'text-white' : 'text-primary/40'}`}
-                                style={{ fontVariationSettings: isSelected ? "'FILL' 1" : "'FILL' 0" }}>
-                                {isBooked ? 'close' : 'chair'}
-                              </span>
-                            </button>
-                          );
-                        })}
-                        <div className="col-span-2 self-center"><div className="h-px w-full bg-slate-100" /></div>
-                        {[2, 3].map(i => {
-                          const seatId = `${row}${SEAT_GRID[i + 2]}`;
-                          const isSelected = selectedSeat === seatId;
-                          const isBooked = booked[i];
-                          return (
-                            <button key={seatId} disabled={isBooked} onClick={() => !isBooked && setSelectedSeat(seatId)}
-                              className={`w-full aspect-square rounded-lg flex items-center justify-center transition-all ${isBooked ? 'bg-[#c6c5d433] cursor-not-allowed' : isSelected ? 'bg-primary shadow-lg scale-110 ring-2 ring-white ring-offset-1' : 'bg-surface-container-highest hover:bg-white'}`}>
-                              <span className={`material-symbols-outlined text-sm ${isBooked ? 'text-slate-300' : isSelected ? 'text-white' : 'text-primary/40'}`}>
-                                {isBooked ? 'close' : 'chair'}
-                              </span>
-                            </button>
-                          );
-                        })}
-                        <div />
-                      </React.Fragment>
+                      <div key={row} className="grid grid-cols-6 gap-2 mb-2 items-center">
+                        {renderSeat(row, 'A', booked[0])}
+                        {renderSeat(row, 'B', booked[1])}
+                        {/* aisle */}
+                        <div className="col-span-2 flex items-center justify-center">
+                          <div className="h-px w-full bg-slate-200" />
+                          <span className="text-[9px] text-slate-400 mx-1 shrink-0">{row}</span>
+                          <div className="h-px w-full bg-slate-200" />
+                        </div>
+                        {renderSeat(row, 'E', booked[2])}
+                        {renderSeat(row, 'F', booked[3])}
+                      </div>
                     ))}
-                    <div className="col-span-8 h-6" />
-                    <div className="col-span-8 flex justify-center py-2">
+
+                    {/* Spacer between classes */}
+                    <div className="h-6" />
+
+                    {/* Economy Class label */}
+                    <div className="flex justify-center py-2">
                       <span className="text-[9px] uppercase tracking-widest text-slate-400 font-bold">Economy Class</span>
                     </div>
+
+                    {/* Economy rows (14–16) */}
                     {seatRows.slice(2).map(({ row, booked }) => (
-                      <React.Fragment key={row}>
-                        <div className="text-center self-center text-xs text-slate-400 font-bold">{row}</div>
-                        {[0, 1, 2, 3].map((i, idx) => {
-                          if (idx === 2) return <div key="gap" className="col-span-2 self-center"><div className="h-px w-full bg-slate-100" /></div>;
-                          const seatId = `${row}${['A', 'B', 'E', 'F'][i]}`;
-                          const isSelected = selectedSeat === seatId;
-                          const isBooked = booked[i];
-                          return (
-                            <button key={seatId} disabled={isBooked} onClick={() => !isBooked && setSelectedSeat(seatId)}
-                              className={`w-full aspect-square rounded-lg flex items-center justify-center transition-all ${isBooked ? 'bg-[#c6c5d433] cursor-not-allowed' : isSelected ? 'bg-primary shadow-lg scale-110 ring-2 ring-white' : 'bg-surface-container-highest hover:bg-white'}`}>
-                              <span className={`material-symbols-outlined text-xs ${isBooked ? 'text-slate-300' : isSelected ? 'text-white' : 'text-primary/40'}`}>
-                                {isBooked ? 'close' : 'chair_alt'}
-                              </span>
-                            </button>
-                          );
-                        })}
-                        <div />
-                      </React.Fragment>
+                      <div key={row} className="grid grid-cols-6 gap-2 mb-2 items-center">
+                        {renderSeat(row, 'A', booked[0])}
+                        {renderSeat(row, 'B', booked[1])}
+                        {/* aisle */}
+                        <div className="col-span-2 flex items-center justify-center">
+                          <div className="h-px w-full bg-slate-200" />
+                          <span className="text-[9px] text-slate-400 mx-1 shrink-0">{row}</span>
+                          <div className="h-px w-full bg-slate-200" />
+                        </div>
+                        {renderSeat(row, 'E', booked[2])}
+                        {renderSeat(row, 'F', booked[3])}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -484,4 +499,3 @@ export default function ReservePage() {
     </Suspense>
   );
 }
-//
