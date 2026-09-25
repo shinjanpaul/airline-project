@@ -65,9 +65,10 @@ TEMPLATES = [{
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 # 🛢️ DATABASE (Auto switch)
+USE_LOCAL_DB = os.environ.get('USE_LOCAL_DB', 'False') == 'True'
 DATABASE_URL = os.environ.get('DATABASE_URL')
 
-if DATABASE_URL:
+if DATABASE_URL and not USE_LOCAL_DB:
     DATABASES = {
         'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     }

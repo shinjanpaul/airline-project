@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import views_chat
 
 urlpatterns = [
     path('auth/login/', views.login_view),
@@ -14,4 +15,5 @@ urlpatterns = [
     path('dashboard/', views.dashboard_stats),
     path('reports/', views.report_view),
     path('create-order/', views.create_razorpay_order),
+    path('chat/', views_chat.chat_view),
 ]
